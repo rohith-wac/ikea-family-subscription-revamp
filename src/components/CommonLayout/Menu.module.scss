@@ -1,0 +1,20 @@
+@import '../../styles/uitilities.scss';
+.site_header {
+    position: relative;
+    min-height: 161px;
+    overflow: hidden;
+    @include min(768) {
+        height: 117px;
+    }
+    @include min(992) {
+        height: 209px;
+    }
+    @include min(1200) {
+        height: 185px;
+    }
+    :global(.hnf-menu) {
+        :global(.hnf-menu--hidden) {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,75 @@
+@import "../../styles/uitilities.scss";
+
+.delivery_subscription{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    @include min(992){
+        padding-top: 67px;
+        padding-bottom: 50px;
+    }
+  
+    .verify{
+        max-width: 327px;
+       
+      
+    }
+    :global{
+        .form-group{
+            margin-bottom: 0;
+        }
+        .form-control{
+            border: 1px solid #929292;
+        }
+    }
+   
+  
+    .desktop{
+        display: none;
+        @include min(992){
+            display: block;
+        }
+    }
+    .mobile{
+        @include min(992){
+            display: none;
+        }
+    }
+   
+}
+.termsandcondition{
+    margin-top: 50px;
+    // padding: 0 1.25rem;
+    @include min(992){
+        margin-top: 100px;
+    }
+    ol,ul{
+        margin-top: 13px;
+        padding-right: 15px;
+        li{
+            font-size: 14px;
+            color: #484848;
+            line-height: 1.6;
+            &+li{
+                margin-top: 5px;
+            }
+            @include min(992){
+                line-height: 40px;
+            }
+        }
+    }
+    h3,p {
+        padding-top: 10px;
+    }
+}
+
+.delivery_subscription.rtl{
+   :global{
+    .row{
+        flex-direction: row-reverse;
+    }
+   }
+   .termsandcondition{
+       direction: rtl;
+     
+   }
+}

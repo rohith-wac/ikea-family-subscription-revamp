@@ -2,11 +2,11 @@ import useSWRImmutable from "swr/immutable";
 import useSWRInfinite from "swr/infinite";
 import { getAxiosInstance } from "../api";
 
-const PRODUCTION = import.meta.env.REACT_APP_PRODUCTION;
+const PRODUCTION = import.meta.env.VITE_REACT_APP_PRODUCTION;
 const baseUrl =
   PRODUCTION === "true"
-    ? import.meta.env.REACT_APP_APIURL_LIVE
-    : import.meta.env.REACT_APP_STAGING_APIURL;
+    ? import.meta.env.VITE_REACT_APP_APIURL_LIVE
+    : import.meta.env.VITE_REACT_APP_STAGING_APIURL;
 
 export const fetcher = async (url) => {
   const api = await getAxiosInstance();
@@ -18,8 +18,8 @@ export const fetcherPost = async ([url, payload]) => {
   return api.post(url, payload).then((res) => res.data);
 };
 
-export const useSwrStatic = (path, options = {}) => {
-  const url = path ? `${baseUrl}${path}` : null;
+export const useSwrStatic = (path, customDomain = false, options = {}) => {
+  const url = path ? `${!customDomain ? baseUrl : ""}${path}` : null;
   const { data, error, isLoading, isValidating, mutate } = useSWRImmutable(
     url,
     fetcher,
