@@ -1,0 +1,116 @@
+{
+  "WELCOME_IKEA": "Welcome to IKEA Family",
+  "REWARDING_EXP": "A rewarding experience that makes life at home better!",
+  "FAMILY_CONTENT": "IKEA Family is for everyone. From those whose homes are their passion, to those who are just starting out and need a helping hand. Just by being a member you’ll receive discounts on many products!",
+
+  "Reward_EXp": "A rewarding experience that makes life at home better!",
+
+  "Invalid_mobile": "Invalid mobile number",
+  "Invalid_otp": "Invalid OTP",
+
+  "Name_First": "First Name",
+  "Name_Last": "Last Name",
+  "Male": "Male",
+  "Femail": "Female",
+  "Email_Address": "Email Address",
+  "Phone_Number": "Phone Number",
+  "Date_of_Birth": "Date of birth",
+  "Nationality_Field": "Nationality",
+  "Nationality_Field_Select": "Please Select Nationality",
+  "Living_Field": "Living situation",
+  "Living_Field_Select": "Please Select Living situation",
+  "Address_Field": "Address",
+  "Preferred_Field": "Preferred Communication",
+  "SMS_Field": "SMS / Whatsapp",
+  "Email_Field": "Email",
+  "Terms_Field": "I agree to the Terms and Conditions",
+  "Next": "Next",
+
+  "First_name": "First Name is Required",
+  "Last_name": "Last Name is Required",
+  "Gender": "Gender is Required",
+  "Email": "Email is Required",
+  "Phone_number": "Phone Number is Required",
+  "DOB": "Date of birth is Required",
+  "Nationality": "Nationality is Required",
+  "Living_Situation": "Living Situation is Required",
+  "Address": "Address is Required",
+  "Preferred_Communication": "Preferred Communication is Required",
+  "Toogle": "Accept Terms & Conditions is required",
+
+  "Mobile_required": "Mobile number is Required",
+  "OTP_required": "OTP is Required",
+  "OTP_invalid": "OTP entered is invalid",
+
+  "min": "Minimum 8 digits is required",
+  "max": "Maximum 9 digits is required",
+
+  "Card_Number": "Card number",
+  "Card_Holder_Name": "Card holder name",
+  "Month": "Month",
+  "Year": "Year",
+  "Security": "Security",
+
+  "card_num_missing": "Card number invalid or missing",
+  "Expiry_year": "Expiry year invalid or missing",
+  "Expiry_month": "Expiry month invalid or missing",
+  "Security_code": "Security code invalid",
+
+  "QR": "QR",
+  "YEAR": "YEAR",
+
+  "DELEVERY_SUBS": "IKEA Delivery Subscription",
+  "YEARLY_SUBS": "Yearly Subscription",
+  "UNLOCK_BENEFITS": "Unlock the benefits of the IKEA Family yearly subscription:",
+  "ONEYEAR_OF": "One year of",
+  "FREE_DELIVERY": "free delivery",
+  "ON_ALL_ORDERS": "on all your orders",
+  "EXCLUSIVE_ACCESS": "Exclusive access to IKEA",
+  "FAMILY_MEM": "family member-only",
+  
+  "VERIFY_YOUR": "Verify your membership by entering your mobile number.",
+  "VERIFY_BUTTON": "Verify",
+
+  "NOT_an_IKEA": "Not yet an IKEA Family member? Join now!",
+  "ENTER_OTP": "Enter OTP",
+  "OTP_SEND": "OTP has been sent to",
+  "SUBMIT": "submit",
+  "RESET_OTP": "Reset OTP",
+  "RESEND_OTP": "Resend OTP",
+  "IN": "in",
+  "SECONDS": "seconds",
+  
+  "START_DATE": "Start date",
+  "END_DATE": "End date",
+  "VALID_TILL": "Subscription valid till",
+  "TERMS_CONDITIONS": "Terms & Conditions",
+  
+  "choose_type": "Choose your payment method",
+  "INFO_MESSAGE": "Please click on apple pay button to pay.",
+
+  "Error_Msg_1": "Apple Pay isn't available at the moment.",
+  "Error_Msg_2": "Apple Pay is supported in this browser, but it is not currently activated",
+  "Error_Msg_3": "Apple Pay is not supported in this browser",
+  "header_Strip": "Check your gift card balance!",
+  
+  "PAY": "Pay now",
+  "Applypay": "Apple Pay",
+  "cardType": "Credit/Debit card",
+  "cardPay": "Pay using Mastercard or Visa cards",
+  "appleSupport": "Applicable only on safari browser",
+  
+  "Status_error_msg": "We could not acquire the payment",
+  "order_failed": "Order failed",
+  
+  "Home": "Home",
+  "SIGN_OUT":"Logout",
+  
+  "CURRENTLY_SUBSCRIBED": "You're all set! Your family subscription plan is active",
+  "PURCHASED": "IKEA Family Subscription",
+  "ORDER_SUMMARY": "Order Summary",
+  
+  "EXPIRES_SOON": "Your subscription to IKEA Delivery will be expiring soon.",
+  "EXTEND_SUBS": "To extend your subscription for another year, renew it here for additional balance of days will be added to the next year's subscription.",
+  "IKEA_FAMILY":"IKEA Family",
+  "PLUS": "Plus"
+}

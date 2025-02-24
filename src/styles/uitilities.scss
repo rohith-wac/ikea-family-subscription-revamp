@@ -1,0 +1,58 @@
+// deafult Color
+$primary-color : #0058A3!default; 
+$secondary-color : #000000 !default; 
+$tertiary-color : #111111 !default;
+// Custom-color
+$grey : #DFDFDF !default;
+$grey-2 : #F8F8F8 !default;
+$grey-3 : #E6E6E6 !default;
+$text-color: #000000 !default;
+$title-color: #000000 !default;
+$title-alt-color: #484848 !default;
+$hover :$primary-color;
+$border-color : #000000 !default;
+$text-alt: #929292 !default;
+$text-off: #484848 !default;
+$white: #fff !default;
+$black: #000 !default;
+$red: #F20505 !default;
+
+// Font size
+$base-font: 1rem !default;
+
+// Font Family
+$font-family: 'Noto IKEA', sans-serif;
+$font-family-2: 'Noto Sans', sans-serif;
+
+//button
+$font-light:300;
+$font-regular:400;
+$font-medium:500;
+$font-semibold:600;
+$font-bold:700;
+$font-weight-title : $font-semibold;
+
+@mixin px-rem($pxValue, $property: "font-size", $standard-size: 16) {
+  #{$property}: $pxValue/$standard-size + rem;
+}
+$base-size: 16;
+@function size($target, $context: $base-size) {
+  @return ($target / $context) * 1rem;
+}
+
+//   Media query
+@mixin min-max($resMin, $resMax) {
+    @media (min-width: $resMin+px) and (max-width: $resMax+px) {
+      @content;
+    }
+  }
+  @mixin max($res) {
+    @media (max-width: $res+px) {
+      @content;
+    }
+  }
+  @mixin min($res) {
+    @media (min-width: $res+px) {
+      @content;
+    }
+  }
