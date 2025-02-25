@@ -7,6 +7,7 @@ const useMenuFooter = () => {
   const { lang: langSlug } = useParams();
   const navigate = useNavigate();
 
+  // URLs for the header and footer
   const styleUrl = `https://cloudlab.ikea.ae/afgikeapps/corsproxy/ownav.php?lang=${langSlug}&country=qa&fragment=style`;
   const headerUrl = `https://cloudlab.ikea.ae/afgikeapps/corsproxy/ownav.php?lang=${langSlug}&country=qa&fragment=header`;
   const footerUrl = `https://cloudlab.ikea.ae/afgikeapps/corsproxy/ownav.php?lang=${langSlug}&country=qa&fragment=footer-lazy`;
@@ -20,7 +21,6 @@ const useMenuFooter = () => {
 
   useEffect(() => {
     const storedLang = localStorage.getItem("language_type") || "en";
-
     if (!langSlug) {
       navigate(`/${storedLang}`, { replace: true });
     } else {

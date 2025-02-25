@@ -1,0 +1,99 @@
+@import "../../styles/uitilities.scss";
+
+.subscription {
+    .title {
+        font-size: 18px;
+
+        @include min(768) {
+            font-size: 30px;
+        }
+
+        @include min(1200) {
+            font-size: 45px;
+        }
+    }
+
+    p {
+        line-height: 26px;
+        font-size: 14px;
+        color: #000;
+        margin-top: 19px;
+
+        @include min(768) {
+            font-size: 16px;
+            margin-top: 27px;
+        }
+    }
+
+    .subtitle {
+        margin-top: 10px;
+        margin-bottom: 0;
+
+        @include max(991) {
+            font-size: 16px;
+            margin-top: 2px;
+        }
+
+        @include max(767) {
+            font-size: 14px;
+            margin-top: 2px;
+        }
+    }
+
+    ul {
+        // padding-left: 25px;
+        margin-bottom: 10px;
+        margin-top: 19px;
+        list-style: none;
+
+        @include min(768) {}
+
+        li {
+            color: #000;
+            font-size: 14px;
+
+            @include min(768) {
+                font-size: 16px;
+            }
+
+            &::marker {
+                font-size: 12px;
+            }
+
+            span {
+                font-weight: 700;
+            }
+        }
+    }
+
+    .sm_title {
+        display: flex;
+        @include max(992) {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+    }
+    .amount {
+        display: flex;
+        flex-direction: row;
+    }
+    .amount_ar {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+}
+
+.subscription.rtl {
+  
+    direction: rtl;
+    text-align: right;
+    ul {
+        direction: rtl;
+        max-width: max-content;
+        margin-left: auto;
+        padding: 0;
+        padding-right: 15px;
+        text-align: right;
+       
+    }
+}

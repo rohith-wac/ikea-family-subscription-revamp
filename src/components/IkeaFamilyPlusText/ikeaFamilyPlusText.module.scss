@@ -1,0 +1,35 @@
+@import "../../styles/uitilities.scss";
+
+.family_text_wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    img {
+        width: 28px;
+        height: 28px;
+    }
+
+    @include min(768) {
+        img {
+            width: 44px;
+            height: 44px;
+        }
+    }
+}
+
+.title {
+    font-size: 29px;
+
+    @include min(768) {
+        font-size: 30px;
+    }
+
+    @include min(1200) {
+        font-size: 45px;
+    }
+
+    span {
+        color: #0099CC;
+    }
+}

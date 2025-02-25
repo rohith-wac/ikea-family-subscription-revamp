@@ -5,25 +5,25 @@ import { useLocation } from "react-router-dom";
 export const GlobalContext = createContext();
 
 const Context = ({ children }) => {
-  const location = useLocation();
-
+  const { pathname } = useLocation();
+  
+  // Fetch the cms content dynamcally
   const {
-    data: { data: cmsContent = [] } = {}, 
+    data: { data: cmsContent = [] } = {},
     error,
     isLoading,
-  } = useSwrStatic(
-    `/get-content/?language=${location.pathname.includes("/ar") ? "ar" : "en"}`
-  );
+  } = useSwrStatic(`/get-content/?language=${pathname.includes("/ar") ? "ar" : "en"}`);
 
+  // Get respective contents according the id
   const getTextById = useCallback(
     (id) => {
-      const item = cmsContent?.find((entry) => entry.id === id);
-      return item ? item.value : "";
+      const item = cmsContent?.find((entry) => entry?.id === id);
+      return item?.value ?? "";
     },
     [cmsContent]
   );
-
   return (
+    // Supplied values to the child elements using the provider
     <GlobalContext.Provider
       value={{ data: cmsContent, error, isLoading, getTextById }}
     >
@@ -33,17 +33,7 @@ const Context = ({ children }) => {
 };
 
 // Custom Hook for Consuming the Context
-const useGlobalContext = () => {
-  const context = useContext(GlobalContext);
-
-  if (!context) {
-    throw new Error(
-      "useGlobalContext must be used within a GlobalContext Provider"
-    );
-  }
-
-  return context;
-};
+const useGlobalContext = () => useContext(GlobalContext);
 
 export default Context;
 export { useGlobalContext };

@@ -1,0 +1,68 @@
+@import "../../styles/uitilities.scss";
+
+.login{
+    width: 100%;
+    margin-top: 27px;
+    @include min(768){
+        width: 60%;
+    }
+    @include min(991){
+        max-width: 327px;
+    }
+    p{
+        font-size: 16px;
+        color: #000;
+    }
+    .join{
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: underline;
+        color: #0058A3;
+        margin-top: 26px;
+        display: inline-block;
+        background-color: transparent;
+        box-shadow: none;
+        border: none;
+        transition: all .3s ease-in-out;
+        &:hover{
+            color: #000;
+        }
+    }
+
+    :global(.custom_verify_btn){
+         margin-top: 21px;
+         margin-top: 20px;
+         font-weight: 700;
+    }
+    .static_input{
+        position: absolute;
+        left: 0;
+        width: 60px;
+        background-color: transparent !important;
+        border: none !important;
+    }
+    .static_input.rtl {
+        right: 0;
+    }
+    .dynamic_input {
+        padding-inline-start: 3.5rem !important;
+    }
+    .dynamic_input.rtl {
+        padding-inline-end: 3.5rem !important;
+    }
+}
+
+.login.rtl{
+   
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: right;
+    margin-left: auto;
+    :global{
+        .form-control{
+           text-align: end;
+          
+           direction: ltr;
+        }
+    }
+}

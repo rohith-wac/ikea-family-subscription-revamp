@@ -53,7 +53,7 @@ export const useSwrStatic = (path, customDomain = false, options = {}) => {
   };
 };
 
-export const useSwrData = (path, options = {}, payload = {}) => {
+export const useSwrData = (path, payload = {}, options = {}) => {
   const url = `${baseUrl}${path}`;
   const { data, error, isLoading, isValidating, mutate } = useSWRImmutable(
     path ? [url, payload] : null,

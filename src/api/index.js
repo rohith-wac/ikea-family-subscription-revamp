@@ -1,11 +1,11 @@
 import axios from "axios";
 import { parseCookies } from "nookies";
 
-const PRODUCTION = import.meta.env.REACT_APP_PRODUCTION;
+const PRODUCTION = import.meta.env.VITE_REACT_APP_PRODUCTION;
 const BASE_URL =
   PRODUCTION === "true"
-    ? import.meta.env.REACT_APP_APIURL_LIVE
-    : import.meta.env.REACT_APP_STAGING_APIURL;
+    ? import.meta.env.VITE_REACT_APP_APIURL_LIVE
+    : import.meta.env.VITE_REACT_APP_STAGING_APIURL;
 
 export const getAxiosInstance = async () => {
   const token = parseCookies()?.USER_ACCESS_TOKEN;

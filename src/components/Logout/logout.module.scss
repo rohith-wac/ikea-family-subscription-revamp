@@ -1,0 +1,51 @@
+@import "../../styles/uitilities.scss";
+
+.logout_btn {
+    width: fit-content;
+    height: 36px;
+    padding: 0 14px;
+    margin-left: auto;
+    border-radius: 999px;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+        @include min(992) {
+            background-color: #0058A3;
+            border: 1px solid #0058A3;
+        }
+
+    }
+    span {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+        img {
+            height: 18px;
+            object-fit: contain;
+        }
+    }
+    margin-left: auto;
+    display: block;
+    font-size: small;
+    font-weight: 600;
+
+}
+.logout_btn.rtl {
+    direction: rtl;
+}
+
+.wrapper {
+    max-width: 112rem;
+    padding-inline-start: 1.25rem;
+    padding-inline-end: 1.25rem;
+
+    @include min(991) {
+        padding-inline-end: 2.5rem;
+
+    }
+
+}

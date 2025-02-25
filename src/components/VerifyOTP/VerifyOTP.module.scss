@@ -1,0 +1,145 @@
+@import "../../styles/uitilities.scss";
+
+
+.modal{
+    text-align: center;
+    padding: 0!important;
+    
+    .title{
+        font-size: 18px;
+        margin-bottom: 11px;
+        @include min(768){
+            font-size: 36px; 
+            margin-bottom: 15px;
+        }
+    }
+    .close{
+        position: absolute;
+        width: 17px;
+        height: 17px;
+        right: 20px;
+        top: 20px;
+        z-index: 111;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        background-image: url("data:image/svg+xml,%3Csvg width='23' height='22' viewBox='0 0 23 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='21.4024' y1='1.30476' x2='2.31053' y2='20.3966' stroke='black' stroke-width='2'/%3E%3Cline x1='20.6913' y1='20.3985' x2='1.59945' y2='1.30663' stroke='black' stroke-width='2'/%3E%3C/svg%3E%0A");
+        background-size: contain;
+        @include min(768){
+            width: 20px;
+            height: 20px; 
+            right: 25px;
+            top: 25px;
+        }
+    }
+    .resend_btn{
+        border: none;
+        background-color: transparent;
+        color: rgba(0, 88, 163, 1);
+        display: block;
+        margin: auto;
+    }
+ 
+    :global{
+        .modal-dialog{
+            max-width: 330px;
+            border-radius: 3px;
+            @include min(768){
+                max-width: 500px;
+            }
+        
+        }
+        .modal-content{
+            border-radius: 0;
+            position: relative;
+            border-radius: 3px;
+            border: none;
+            @include min(768){
+                height: 500px;
+            }
+        }
+        .modal-body{
+           padding: 58px 40px;
+           padding-bottom: 24px;
+           @include min(768){
+            padding: 79px 86px; 
+           }
+           .form-group{
+            
+            @include max(767){
+              margin: 0;
+            }
+           }
+           .head_text{
+            display: inline-block;
+           }
+           p{
+            color: #000;
+            font-size: 14px;
+            direction: rtl;
+            margin-bottom: 0;
+            span{
+                display: inline-block;
+            }
+           }
+           .custom_verify_btn{
+            margin-bottom: 10px;
+            margin-top: 10px;
+            @include min(768){
+                margin-bottom: 20px;
+                margin-top: 20px;
+            }
+           }
+           a,.resend{
+            color: #0058A3;
+            margin-top: 5px;
+            display: block;
+            text-decoration: none;
+            line-height: 20px;
+            @include min(768){
+                margin-top: 10px;
+            }
+           }
+         
+        }
+        .form-group{
+            margin-bottom: 0;
+            margin-top: 10px;
+        }
+        .form-control{
+            border: 1px solid #929292;
+           
+        }
+    }
+    .otpform{
+        .otpInputWrp{
+            column-gap: 10px;
+            :global{
+                .form-control{
+
+                }
+            }
+        }
+    }
+}
+
+.modal.rtl{
+
+    .close{
+        
+    }
+    :global{
+        .form-control{
+            text-align: end;
+          
+            direction: ltr;
+        
+        }
+        .resend span{
+           
+            display: inline-block;
+           }
+    }
+}
+

@@ -1,10 +1,9 @@
 import { useLocation } from "react-router-dom";
 
 export const useRtl = ({ Style }) => {
-  const location = useLocation();
-  const currentPath = location.pathname;
+  const { pathname } = useLocation();
 
-  const myClass = currentPath.endsWith("/ar");
-  const rtl = myClass ? Style.rtl : "";
+  const myClass = pathname.endsWith("/ar");
+  const rtl = myClass && Style?.rtl;
   return { rtl };
 };
