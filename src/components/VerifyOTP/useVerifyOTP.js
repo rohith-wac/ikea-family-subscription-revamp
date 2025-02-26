@@ -5,13 +5,14 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { resendOTP, verifyOTP } from "./api";
+import { getFromLocalStorage } from "../../helpers/functions";
 
 const useVerifyOTP = ({ onHides, setIsTimerRunning }) => {
   const [timer, setTimer] = useState(59);
   const { t } = useTranslation(["common"]);
   const navigate = useNavigate();
   const user_id = parseCookies()?.userID;
-  const lang = localStorage.getItem("language_type");
+  const lang = getFromLocalStorage("language_type");
 
   const resetTimer = () => {
     setTimer(59);

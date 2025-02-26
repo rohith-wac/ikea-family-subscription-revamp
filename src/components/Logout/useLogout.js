@@ -4,6 +4,7 @@ import Style from "./logout.module.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useRtl } from "../../hooks/useRtl";
+import { setInLocalStorage } from "../../helpers/functions";
 const useLogout = () => {
   const token = true;
   // const token = parseCookies()?.USER_ACCESS_TOKEN;
@@ -18,7 +19,7 @@ const useLogout = () => {
         destroyCookie(null, "USER_ACCESS_TOKEN", { path: "/" });
         navigate(`/${lang}`);
         localStorage.clear();
-        localStorage.setItem("language_type", lang);
+        setInLocalStorage("language_type", lang);
       })
       .catch((err) => {
         console.log("failed to logout", err);

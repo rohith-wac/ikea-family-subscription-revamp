@@ -4,7 +4,7 @@ import { useState } from "react";
 import * as Yup from "yup";
 import { profileLogin } from "./api";
 import { useRtl } from "../../hooks/useRtl";
-import { pushToAdobeDataLayer } from "../../helpers/functions";
+import { getFromLocalStorage, pushToAdobeDataLayer } from "../../helpers/functions";
 import { useTranslation } from "react-i18next";
 
 const useLoginForm = ({ Style }) => {
@@ -15,7 +15,7 @@ const useLoginForm = ({ Style }) => {
     isRegister: false,
   });
   const [isTimerRunning, setIsTimerRunning] = useState(false);
-  const lang = localStorage.getItem("language_type")
+  const lang = getFromLocalStorage("language_type")
 
   const formik = useFormik({
     initialValues: {

@@ -1,6 +1,6 @@
 import useTermsAndConditions from "./useTermsAndConditions";
-
-const TermsandConditions = ({ getTextById, Style }) => {
+import Style from "./TermsAndConitions.module.scss";
+const TermsandConditions = ({ getTextById }) => {
   const { direction, termsAndCondition } = useTermsAndConditions();
   return (
     <div dir={direction} className={Style.termsandcondition}>

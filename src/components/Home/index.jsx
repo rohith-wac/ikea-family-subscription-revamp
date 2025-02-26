@@ -39,11 +39,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <TermsandConditions
-              getTextById={getTextById}
-              rtl={rtl}
-              Style={Style}
-            />
+            <TermsandConditions getTextById={getTextById} rtl={rtl} />
           </div>
         </div>
       </section>

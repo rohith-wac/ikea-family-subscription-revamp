@@ -1,0 +1,334 @@
+@import "../../styles/uitilities.scss";
+
+.payment {
+
+  // margin-top: 30px;
+  @include min(992) {
+    margin-top: 48px;
+  }
+  :global{
+    .error{
+      margin-top: 20px;
+      font-size: 14px;
+    }
+  }
+
+  .payment_input {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 22px;
+    margin-top: 20px;
+
+    :global {
+     
+      .form-group {
+        width: 100%;
+        max-width: 300px;
+        margin-right: 12px;
+
+        @include min(992) {
+          max-width: 437px;
+          margin-right: 21px;
+        }
+
+        &:nth-child(even) {
+          max-width: 84px;
+          margin-right: 0;
+
+          @include min(992) {
+            max-width: 283px;
+          }
+        }
+      }
+
+      .form-floating {
+        font-size: 16px;
+        font-family: "Noto IKEA", sans-serif;
+        @include min(992){
+          max-width: max-content;
+        }
+        .card-number-fame{
+          font-size: 16px;
+          font-family: "Noto IKEA", sans-serif;
+        }
+     
+        .form-control {
+          padding: 5px 10px !important;
+          border: 1px solid rgba(146, 146, 146, 1);
+          width: 100%;
+          @include min(992){
+            width: 408px;
+          }
+        }
+
+        .form-control.number {
+          width: 100%;
+         margin-top: 20px;
+          @include min(992) {
+            width: 307px;
+            margin-left: 25px;
+            margin-top: 0;
+          }
+        }
+
+        label {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .input_wrap {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    @include min(992){
+     flex-wrap: nowrap;
+    }
+
+
+    :global {
+      .form-floating {
+        width: 100%;
+      }
+
+      
+
+      .form-select {
+        box-shadow: none;
+        border: 1px solid rgba(146, 146, 146, 1);
+        width: 100%;
+        @include min(992){
+          width: 140px;
+        }
+
+      }
+    }
+  }
+
+ 
+
+  .checkbox {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 32px;
+
+    img {
+      width: 46px;
+      height: 25px;
+      margin: 0 17px;
+      margin-top: 5px;
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .applepay {
+      color: #929292;
+    }
+
+    span {
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .check_label {
+      display: flex;
+    }
+  }
+
+  :global {
+    .form-check label::after {
+      background-color: #cccccc;
+      opacity: 1;
+      width: 16px;
+      height: 16px;
+      left: 4px;
+    }
+
+    .form-check label::before {
+      border-color: #cccccc;
+    }
+
+    .form-check input[type="radio"]:checked+label::after {
+      background-color: #003e72;
+    }
+
+    .form-check input[type="radio"]:checked+label::before {
+      border-color: #003e72;
+    }
+  }
+
+  :global(.custom_btn) {
+    width: 100%;
+    margin-top: 26px;
+
+    @include min(767) {
+      max-width: 327px;
+      margin-top: 40px;
+    }
+  }
+  .btn_wrap{
+    width: 100%;
+    text-align: left;
+  }
+}
+
+.checkout_modal {
+  text-align: center;
+
+  :global {
+    .modal-dialog {
+      @include min(768) {
+        max-width: 350px;
+      }
+    }
+  }
+
+  &_header {
+    position: relative;
+  }
+
+  &_body {
+    position: relative;
+    padding: size(35);
+
+    :global {
+      .btn {
+        margin-top: size(15);
+        line-height: 1.1;
+      }
+    }
+  }
+}
+
+.checkout_iframe_modal {
+  :global {
+    .modal-dialog {
+      @include min(768) {
+        max-width: 100vw !important;
+      }
+    }
+  }
+
+  &_header {
+    position: relative;
+  }
+
+  &_body {
+    position: relative;
+    padding: size(35);
+
+    :global {
+      .btn {
+        margin-top: size(15);
+      }
+    }
+  }
+}
+.dropdown {
+  // width: 47%!important;
+ 
+  @include min(992){
+    margin-left: 25px;
+  }
+
+  :global {
+    .form-select {
+      height: 50px;
+      padding: 5px 10px !important;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.1875 1.51855L6.08789 6.61816L5.57793 6.1082L0.988281 1.51855' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E%0A");    
+      background-size: 14px;
+      padding-left: 10px;
+      background-position: 96% 20px;
+    }
+  
+  }
+
+}
+
+
+.payment.rtl {
+  direction: rtl;
+  .checkbox {
+    direction: rtl;
+    justify-content: flex-start;
+
+    .check_label {
+     
+    }
+    :global{
+     .form-check{
+      margin-left: 30px;
+     }
+     
+    }
+  }
+  .input_wrap{
+    justify-content: start;
+  
+    :global{
+       input{
+        text-align: right;
+        direction: ltr;
+        &::placeholder{
+         
+        }
+       }
+       .form-floating{
+        .form-control.number {
+       
+          @include min(992) {
+            width: 307px;
+            margin-left: 0;
+            margin-right: 25px;
+            margin-top: 0;
+          }
+        }
+       }
+    }
+  }
+  input{
+    text-align: right;
+  }
+
+  button {
+
+  
+  }
+  .btn_wrap{
+    text-align: right;
+  }
+  .dropdown {
+    @include min(992){
+      margin-left: 0;
+      margin-right: 25px;
+    }
+    :global{
+      .form-select{
+        background-position: 10px 20px;
+        padding-left: 5px;
+      }
+    }
+  }
+}
+
+
+
+.dropdown_wrap{
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  justify-content: space-between;
+  @include min(992){
+    margin-top: 0;
+    max-width: max-content;
+  }
+}
+

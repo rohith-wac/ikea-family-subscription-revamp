@@ -1,7 +1,8 @@
+import FormPayment from "../FormPayment";
 import Style from "./Subscription.module.scss";
 import useSubscription from "./useSubscription";
 const Subscription = () => {
-  const { userData, basicData, orderId, rtl, SubscriptionType } =
+  const { userData, basicData, rtl, SubscriptionType } =
     useSubscription({ Style });
   return (
     <>
@@ -12,18 +13,17 @@ const Subscription = () => {
               <div className={`col-lg-6`}>
                 <SubscriptionType props={userData} rtl={rtl} />
                 <div className="d-block d-lg-none">
-                  <figure className={Style.figure}>
+                  <figure className={Style.figure}>/projects/ikea-family-subscription-ui-react/src/components/FormPayment
                     <img
                       src="/assets/images/subscription-poster.png"
                       alt="poster"
                     />
                   </figure>
                 </div>
-                {/* <FormPayment
+                <FormPayment
                   userData={userData}
                   basicData={basicData}
-                  orderId={orderId}
-                /> */}
+                />
               </div>
               <div className="col-lg-6">
                 <div className="d-none d-lg-block">

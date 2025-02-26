@@ -8,10 +8,10 @@ import SubscriptionText from "../SubscriptionText";
 import SubscriptionExpired from "../SubscriptionExpired";
 import SubscriptionSuccess from "../SubscriptionSuccess";
 import SubscriptionDate from "../SubscriptionDate";
+import { setInLocalStorage } from "../../helpers/functions";
 
 const useSubscription = ({ Style }) => {
   const { lang } = useParams();
-  const [orderId, setOrderId] = useState(null);
   const { getTextById, basicData } = useGlobalContext();
   const { rtl } = useRtl({ Style });
 
@@ -22,8 +22,7 @@ const useSubscription = ({ Style }) => {
   if (userData?.data?.payment_option == 1) {
     postMethodInstance("create-order", { language: lang })
       .then((data) => {
-        setOrderId(data?.data?.id);
-        localStorage.setItem("id", data?.data?.id);
+        setInLocalStorage("order_id", data?.data?.id);
       })
       .catch((err) => {
         console.log(err);
@@ -47,7 +46,6 @@ const useSubscription = ({ Style }) => {
   return {
     userData,
     basicData,
-    orderId,
     rtl,
     SubscriptionType,
   };

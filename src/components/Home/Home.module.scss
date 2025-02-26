@@ -36,31 +36,6 @@
     }
    
 }
-.termsandcondition{
-    margin-top: 50px;
-    // padding: 0 1.25rem;
-    @include min(992){
-        margin-top: 100px;
-    }
-    ol,ul{
-        margin-top: 13px;
-        padding-right: 15px;
-        li{
-            font-size: 14px;
-            color: #484848;
-            line-height: 1.6;
-            &+li{
-                margin-top: 5px;
-            }
-            @include min(992){
-                line-height: 40px;
-            }
-        }
-    }
-    h3,p {
-        padding-top: 10px;
-    }
-}
 
 .delivery_subscription.rtl{
    :global{

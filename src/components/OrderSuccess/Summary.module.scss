@@ -1,0 +1,104 @@
+@import "../../styles/uitilities.scss";
+
+.delivery_subscription {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  @include min(992) {
+    padding-top: 67px;
+    padding-bottom: 50px;
+  }
+
+  .verify {
+    max-width: 327px;
+  }
+  :global {
+    .form-group {
+      margin-bottom: 0;
+    }
+    .form-control {
+      border: 1px solid #929292;
+    }
+  }
+
+  .termsandcondition {
+    margin-top: 45px;
+    ol {
+      margin-top: 13px;
+      padding-left: 20px;
+      li {
+        font-size: 14px;
+        color: #484848;
+        line-height: 1.6;
+        & + li {
+          margin-top: 5px;
+        }
+        @include min(992) {
+          line-height: 40px;
+        }
+      }
+    }
+  }
+  .message_title {
+    font-size: 1.25rem;
+    letter-spacing: 0;
+    line-height: 27px;
+    font-weight: 700;
+    margin-bottom: 0.625rem;
+  }
+  .message_status {
+    color: #000;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.625rem;
+    text-align: center;
+  }
+
+  .contentWrapper {
+    text-align: center;
+    max-width: 360px;
+    margin: auto;
+    margin-bottom: 50px;
+    @include min(992) {
+      margin-bottom: 0;
+    }
+    .fig_wrapper {
+      width: 250px;
+      max-width: 100%;
+      margin: auto;
+      margin-bottom: 30px;
+      @include max(767) {
+        margin-top: 30px;
+      }
+      .fig_img_wrapper {
+        position: relative;
+        padding-bottom: calc((200 / 300) * 100%);
+        width: 100%;
+        img {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          -o-object-fit: contain;
+          top: 0;
+          left: 0;
+        }
+      }
+      @include min(1200) {
+        width: 300px;
+      }
+    }
+    button {
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      margin: 0 10px;
+      margin-top: size(20);
+      @include max(767) {
+        padding: 10px 25px;
+      }
+    }
+  }
+}
+
+.failedClass {
+  width: 100%;
+}

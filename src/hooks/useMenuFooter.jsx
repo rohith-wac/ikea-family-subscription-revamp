@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useSwrStatic } from "../helpers/swr";
 import { useLocation, useNavigate, useParams } from "react-router-dom/dist";
 import i18n from "../i18n";
+import { LANGUAGE_CODES } from "../constants/index";
+import { getFromLocalStorage, setInLocalStorage } from "../helpers/functions";
 
 const useMenuFooter = () => {
   const { lang: langSlug } = useParams();
@@ -21,7 +23,8 @@ const useMenuFooter = () => {
   const { data: scriptData } = useSwrStatic(scriptUrl, true);
 
   useEffect(() => {
-    const storedLang = localStorage.getItem("language_type") || "en";
+    const storedLang = getFromLocalStorage("language_type") || "en";
+    const selectedLang = LANGUAGE_CODES.includes(langSlug) ? langSlug : "en";
     const segments = pathname?.split("/").filter(Boolean);
 
     if (!langSlug) {
@@ -30,8 +33,8 @@ const useMenuFooter = () => {
         replace: true,
       });
     } else {
-      localStorage.setItem("language_type", langSlug);
-      i18n.changeLanguage(langSlug);
+      setInLocalStorage("language_type", selectedLang);
+      i18n.changeLanguage(selectedLang);
     }
   }, [langSlug, navigate]);
 
