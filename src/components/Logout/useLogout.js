@@ -5,7 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useRtl } from "../../hooks/useRtl";
 const useLogout = () => {
-  const token = parseCookies()?.USER_ACCESS_TOKEN;
+  const token = true;
+  // const token = parseCookies()?.USER_ACCESS_TOKEN;
   const navigate = useNavigate();
   const { lang } = useParams();
   const { t } = useTranslation(["common"]);

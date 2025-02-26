@@ -6,13 +6,17 @@ export const GlobalContext = createContext();
 
 const Context = ({ children }) => {
   const { pathname } = useLocation();
-  
   // Fetch the cms content dynamcally
   const {
     data: { data: cmsContent = [] } = {},
     error,
     isLoading,
-  } = useSwrStatic(`/get-content/?language=${pathname.includes("/ar") ? "ar" : "en"}`);
+  } = useSwrStatic(
+    `/get-content/?language=${pathname.includes("/ar") ? "ar" : "en"}`
+  );
+
+  // Base api to get the family subscription amount
+  const { data: basicData, mutate } = useSwrStatic(`/basic-details`);
 
   // Get respective contents according the id
   const getTextById = useCallback(
@@ -25,7 +29,14 @@ const Context = ({ children }) => {
   return (
     // Supplied values to the child elements using the provider
     <GlobalContext.Provider
-      value={{ data: cmsContent, error, isLoading, getTextById }}
+      value={{
+        data: cmsContent,
+        error,
+        isLoading,
+        getTextById,
+        basicData,
+        mutate,
+      }}
     >
       {children}
     </GlobalContext.Provider>

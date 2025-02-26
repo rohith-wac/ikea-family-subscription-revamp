@@ -1,0 +1,84 @@
+@import "../../styles/uitilities.scss";
+
+.delivery_subscription{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    @include min(992){
+        padding-top: 67px;
+        padding-bottom: 50px;
+    }
+
+  
+  
+    .verify{
+        max-width: 327px;
+       
+      
+    }
+    :global{
+        .form-group{
+            margin-bottom: 0;
+        }
+        .form-control{
+            border: 1px solid #929292;
+        }
+    }
+    .left_space{
+        padding-left: 50px;
+    }
+ 
+   
+    .termsandcondition{
+        margin-top: 45px;
+        ol{
+            margin-top: 13px;
+            padding-left: 20px;
+            li{
+                font-size: 14px;
+                color: #484848;
+                line-height: 1.6;
+                &+li{
+                    margin-top: 5px;
+                }
+                @include min(992){
+                    line-height: 40px;
+                }
+            }
+        }
+    }
+    .desktop{
+        display: none;
+        @include min(992){
+            display: block;
+        }
+    }
+    .mobile{
+        @include min(992){
+            display: none;
+        }
+    }
+   
+}
+
+.delivery_subscription.rtl{
+
+    :global{
+        .error{
+            margin-left: auto;
+            margin-top: 20px;
+        }
+        .row{
+            direction: rtl;
+
+        }
+        .inner{
+           padding-left: 0;
+         
+           @include min(992){
+            padding-right: 30px;
+           }
+         
+        }
+      
+    }
+}

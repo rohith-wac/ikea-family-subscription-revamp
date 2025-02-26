@@ -4,10 +4,12 @@ import Style from "./Home.module.scss";
 import { useRtl } from "../../hooks/useRtl";
 import SubscriptionText from "../SubscriptionText";
 import LoginForm from "../LoginForm";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
-  const { getTextById } = useGlobalContext();
-  const { rtl } = useRtl({Style});
+  const { getTextById, basicData } = useGlobalContext();
+  const { rtl } = useRtl({ Style });
+  const { t } = useTranslation(["common"]);
   return (
     <>
       <section className={`${Style.delivery_subscription} ${rtl}`}>
@@ -15,7 +17,12 @@ const Home = () => {
           <div className="inner">
             <div className="row">
               <div className="col-lg-6">
-                <SubscriptionText getTextById={getTextById} />
+                <SubscriptionText
+                  getTextById={getTextById}
+                  rtl={rtl}
+                  t={t}
+                  amount={basicData?.data?.amount}
+                />
                 <div className={`${Style.desktop}`}>
                   <LoginForm getTextById={getTextById} />
                 </div>

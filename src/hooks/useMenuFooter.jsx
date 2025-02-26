@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useSwrStatic } from "../helpers/swr";
-import { useNavigate, useParams } from "react-router-dom/dist";
+import { useLocation, useNavigate, useParams } from "react-router-dom/dist";
 import i18n from "../i18n";
 
 const useMenuFooter = () => {
   const { lang: langSlug } = useParams();
+  const { pathname } = useLocation();
   const navigate = useNavigate();
 
   // URLs for the header and footer
@@ -21,8 +22,13 @@ const useMenuFooter = () => {
 
   useEffect(() => {
     const storedLang = localStorage.getItem("language_type") || "en";
+    const segments = pathname?.split("/").filter(Boolean);
+
     if (!langSlug) {
-      navigate(`/${storedLang}`, { replace: true });
+      // append the lang param to the current url
+      navigate(`${segments.join("/")}/${storedLang}`, {
+        replace: true,
+      });
     } else {
       localStorage.setItem("language_type", langSlug);
       i18n.changeLanguage(langSlug);

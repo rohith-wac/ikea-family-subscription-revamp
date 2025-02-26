@@ -1,10 +1,7 @@
 import Style from "./SubscriptionText.module.scss";
-import useSubscriptionText from "./useSubscriptionText";
 import IkeaFamilyPlusText from "../IkeaFamilyPlusText";
 
-const SubscriptionText = ({ getTextById }) => {
-  const { amount, rtl, t } = useSubscriptionText();
-
+const SubscriptionText = ({ getTextById, rtl, t, amount }) => {
   return (
     <div className={`${Style.subscription} ${rtl}`}>
       <IkeaFamilyPlusText t={t} />
