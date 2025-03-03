@@ -11,39 +11,37 @@ const Home = () => {
   const { rtl } = useRtl({ Style });
   const { t } = useTranslation(["common"]);
   return (
-    <>
-      <section className={`${Style.delivery_subscription} ${rtl}`}>
-        <div className="section_wrap">
-          <div className="inner">
-            <div className="row">
-              <div className="col-lg-6">
-                <SubscriptionText
-                  getTextById={getTextById}
-                  rtl={rtl}
-                  t={t}
-                  amount={basicData?.data?.amount}
-                />
-                <div className={`${Style.desktop}`}>
-                  <LoginForm getTextById={getTextById} />
-                </div>
-              </div>
-              <div className="col-lg-6 ">
-                <figure>
-                  <img
-                    src="/assets/images/subscription-poster.png"
-                    alt="poster"
-                  />
-                </figure>
-                <div className={Style.mobile}>
-                  <LoginForm getTextById={getTextById} />
-                </div>
+    <section className={`${Style.delivery_subscription} ${rtl}`}>
+      <div className="section_wrap">
+        <div className="inner">
+          <div className="row">
+            <div className="col-lg-6">
+              <SubscriptionText
+                getTextById={getTextById}
+                rtl={rtl}
+                t={t}
+                amount={basicData?.data?.amount}
+              />
+              <div className={`${Style.desktop}`}>
+                <LoginForm getTextById={getTextById} />
               </div>
             </div>
-            <TermsandConditions getTextById={getTextById} rtl={rtl} />
+            <div className="col-lg-6 ">
+              <figure>
+                <img
+                  src="/assets/images/subscription-poster.png"
+                  alt="poster"
+                />
+              </figure>
+              <div className={Style.mobile}>
+                <LoginForm getTextById={getTextById} />
+              </div>
+            </div>
           </div>
+          <TermsandConditions getTextById={getTextById} rtl={rtl} />
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

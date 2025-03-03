@@ -13,7 +13,7 @@ const Subscription = () => {
               <div className={`col-lg-6`}>
                 <SubscriptionType props={userData} rtl={rtl} />
                 <div className="d-block d-lg-none">
-                  <figure className={Style.figure}>/projects/ikea-family-subscription-ui-react/src/components/FormPayment
+                  <figure className={Style.figure}>
                     <img
                       src="/assets/images/subscription-poster.png"
                       alt="poster"

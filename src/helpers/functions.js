@@ -50,3 +50,17 @@ export const setInLocalStorage = (key, value) => {
     console.error(`Error setting data in localStorage for key: ${key}`, error);
   }
 };
+
+// Utility to remove data from localStorage
+export const removeFromLocalStorage = (key) => {
+  if (typeof window === "undefined") return;
+
+  try {
+    localStorage.removeItem(key);
+  } catch (error) {
+    console.error(
+      `Error removing data from localStorage for key: ${key}`,
+      error
+    );
+  }
+};

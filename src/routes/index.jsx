@@ -17,6 +17,8 @@ const Routes = () => {
         { path: ":lang", element: <HomePage /> },
         { path: "subscription", element: <Navigate to={`/subscription/${storedLang}`} replace /> },
         { path: "subscription/:lang", element: <SubscriptionPage /> },
+        { path: "order-summary/:orderId/success", element: <Navigate to={`/order-summary/:orderId/success/${storedLang}`} replace /> },
+        { path: "order-summary/:orderId/failed", element: <Navigate to={`/order-summary/:orderId/failed/${storedLang}`} replace /> },
         { path: "order-summary/:orderId/success/:lang", element: <OrderSuccess /> },
         { path: "order-summary/:orderId/failed/:lang", element: <OrderFailed /> },
       ],

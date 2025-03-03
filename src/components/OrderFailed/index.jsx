@@ -12,7 +12,7 @@ const OrderFailed = () => {
     <section className={Style.delivery_subscription}>
       <div className="container">
         <div className="row">
-          <div className={`col-lg-6 ${Style.failedClass}`}>
+          <div className={`col-lg-12 ${Style.failedClass}`}>
             <div className={`${Style.desktop}`}>
               <div className={Style.contentWrapper}>
                 <div className={Style.fig_wrapper}>

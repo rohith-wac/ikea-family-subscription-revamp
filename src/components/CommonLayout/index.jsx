@@ -5,6 +5,7 @@ import { Logout } from "../Logout";
 
 const CommonLayout = () => {
   const { styleData, headerData, footerData, scriptData } = useMenuFooter();
+  
   return (
     <>
       <div className={Style.site_header}>
