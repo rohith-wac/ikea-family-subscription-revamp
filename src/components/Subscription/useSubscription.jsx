@@ -43,11 +43,14 @@ const useSubscription = ({ Style }) => {
     }
   };
 
+  const showFormPayment = [1, 2].includes(userData?.data?.payment_option);
+
   return {
     userData,
     basicData,
     rtl,
     SubscriptionType,
+    showFormPayment,
   };
 };
 

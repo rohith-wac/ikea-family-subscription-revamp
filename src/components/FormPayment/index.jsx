@@ -8,7 +8,6 @@ const FormPayment = ({ userData, basicData }) => {
   const {
     handleOnCardTokenized,
     t,
-    paymentOptionStatus,
     REACT_APP_CHECKOUT_PUBLIC_KEY,
     formik,
     rtl,
@@ -19,15 +18,7 @@ const FormPayment = ({ userData, basicData }) => {
   });
 
   return (
-    <div
-      className={`${Style.payment} ${rtl}`}
-      style={{
-        display:
-          paymentOptionStatus == "1" || paymentOptionStatus == "2"
-            ? ""
-            : "none",
-      }}
-    >
+    <div className={`${Style.payment} ${rtl}`}>
       {basicData?.data?.card_payment === "1" && (
         <div className={Style.checkbox}>
           <Form.Check

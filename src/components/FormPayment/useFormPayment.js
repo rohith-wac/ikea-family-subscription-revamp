@@ -62,7 +62,6 @@ const useFormPayment = ({ userData, Frames }) => {
   return {
     handleOnCardTokenized,
     t,
-    paymentOptionStatus: userData?.data?.payment_option,
     REACT_APP_CHECKOUT_PUBLIC_KEY,
     formik,
     lang,

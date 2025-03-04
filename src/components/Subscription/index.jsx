@@ -2,7 +2,7 @@ import FormPayment from "../FormPayment";
 import Style from "./Subscription.module.scss";
 import useSubscription from "./useSubscription";
 const Subscription = () => {
-  const { userData, basicData, rtl, SubscriptionType } =
+  const { userData, basicData, rtl, SubscriptionType, showFormPayment } =
     useSubscription({ Style });
   return (
     <>
@@ -20,10 +20,9 @@ const Subscription = () => {
                     />
                   </figure>
                 </div>
-                <FormPayment
-                  userData={userData}
-                  basicData={basicData}
-                />
+                {showFormPayment && (
+                  <FormPayment userData={userData} basicData={basicData} />
+                )}
               </div>
               <div className="col-lg-6">
                 <div className="d-none d-lg-block">
