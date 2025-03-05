@@ -86,8 +86,8 @@ const FormPayment = ({ userData, basicData }) => {
                   type="text"
                   placeholder={t("Card_Holder_Name")}
                   className={Style.form_control}
-                  onChange={formik.handleChange}
-                  value={formik.values.cardholderName}
+                  onChange={(value)=> formik.setFieldValue("cardholderName",value)}
+                  // value={formik.values.cardholderName}
                   required
                 />
               </FloatingLabel>

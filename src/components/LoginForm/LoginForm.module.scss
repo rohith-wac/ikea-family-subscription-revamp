@@ -50,6 +50,12 @@
     .dynamic_input.rtl {
         padding-inline-end: 3.5rem !important;
     }
+    small {
+        color: red;
+        top: 100% !important;
+        left: 0;
+    }
+
 }
 
 .login.rtl{

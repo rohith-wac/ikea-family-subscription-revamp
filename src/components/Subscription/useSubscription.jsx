@@ -43,7 +43,8 @@ const useSubscription = ({ Style }) => {
     }
   };
 
-  const showFormPayment = [1, 2].includes(userData?.data?.payment_option);
+  const showFormPayment = true;
+  // const showFormPayment = [1, 2].includes(userData?.data?.payment_option);
 
   return {
     userData,

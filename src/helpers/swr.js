@@ -1,6 +1,6 @@
 import useSWRImmutable from "swr/immutable";
-import useSWRInfinite from "swr/infinite";
 import { getAxiosInstance } from "../api";
+import useSWRMutation from "swr/mutation";
 
 const PRODUCTION = import.meta.env.VITE_REACT_APP_PRODUCTION;
 const baseUrl =
@@ -16,6 +16,11 @@ export const fetcher = async (url) => {
 export const fetcherPost = async ([url, payload]) => {
   const api = await getAxiosInstance();
   return api.post(url, payload).then((res) => res.data);
+};
+
+const mutationFetcher = async ([url, method], { arg }) => {
+  const api = await getAxiosInstance();
+  return api[method](url, arg).then((res) => res.data);
 };
 
 export const useSwrStatic = (path, customDomain = false, options = {}) => {
@@ -91,80 +96,22 @@ export const useSwrData = (path, payload = {}, options = {}) => {
   };
 };
 
-export const useSwrInfiniteData = (getPathKey = () => {}, options = {}) => {
-  const getKey = (pageIndex) => {
-    return `${baseUrl}${getPathKey(pageIndex)}`;
-  };
-  const { data, error, isLoading, isValidating, size, setSize, mutate } =
-    useSWRInfinite(getKey, fetcher, {
-      onErrorRetry: (error, key, config, revalidate, { retryCount }) => {
-        if (
-          error.response.status === 404 ||
-          error.response.status === 401 ||
-          error.response.status === 400 ||
-          error.response.status === 405
-        ) {
-          return;
-        }
-        if (retryCount <= 3) {
-          setTimeout(() => revalidate({ retryCount }), 5000);
-        }
-      },
-      loadingTimeout: 10000,
-      revalidateFirstPage: false,
-      keepPreviousData: true,
-      refreshInterval: 1000 * 60 * 60,
+// Custom SWR mutation hook
+export const useSwrMutate = (path, method = "post", options = {}) => {
+  const url = `${baseUrl}${path}`;
+
+  const { trigger, data, error, isMutating } = useSWRMutation(
+    path ? [url, method] : null,
+    mutationFetcher,
+    {
       ...options,
-    });
+    }
+  );
 
   return {
+    trigger,
     data,
-    isLoading,
-    isValidating,
     isError: error,
-    size,
-    setSize,
-    mutate,
-  };
-};
-
-export const useSwrInfinitePayload = (
-  getPathKey = () => {},
-  options = {},
-  payload = {}
-) => {
-  const getKey = (pageIndex) => {
-    return [`${baseUrl}${getPathKey(pageIndex)}`, payload];
-  };
-
-  const { data, error, isLoading, isValidating, size, setSize, mutate } =
-    useSWRInfinite(getKey, fetcherPost, {
-      onErrorRetry: (error, key, config, revalidate, { retryCount }) => {
-        if (
-          error.response.status === 404 ||
-          error.response.status === 401 ||
-          error.response.status === 400 ||
-          error.response.status === 405
-        ) {
-          return;
-        }
-        if (retryCount <= 3) {
-          setTimeout(() => revalidate({ retryCount }), 5000);
-        }
-      },
-      loadingTimeout: 10000,
-      revalidateFirstPage: false,
-      refreshInterval: 1000 * 60 * 60,
-      ...options,
-    });
-
-  return {
-    data,
-    isLoading,
-    isValidating,
-    isError: error,
-    size,
-    setSize,
-    mutate,
+    isMutating,
   };
 };

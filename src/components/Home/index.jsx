@@ -18,7 +18,6 @@ const Home = () => {
             <div className="col-lg-6">
               <SubscriptionText
                 getTextById={getTextById}
-                rtl={rtl}
                 t={t}
                 amount={basicData?.data?.amount}
               />
