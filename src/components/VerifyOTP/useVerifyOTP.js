@@ -1,9 +1,7 @@
-import { useFormik } from "formik";
 import { parseCookies, setCookie } from "nookies";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import * as Yup from "yup";
 import { resendOTP, verifyOTP } from "./api";
 import { getFromLocalStorage } from "../../helpers/functions";
 
@@ -13,38 +11,54 @@ const useVerifyOTP = ({ onHides, setIsTimerRunning }) => {
   const navigate = useNavigate();
   const user_id = parseCookies()?.userID;
   const lang = getFromLocalStorage("language_type");
+  const formApiRef = useRef();
 
   const resetTimer = () => {
     setTimer(59);
     setIsTimerRunning(true);
   };
 
-  const formik = useFormik({
-    initialValues: { otp: "", user_code: user_id },
-    validationSchema: Yup.object({
-      otp: Yup.number().min(6).max(6).required(t("OTP_required")),
-    }),
-    onSubmit: async (values, { resetForm }) => {
-      try {
-        const response = await verifyOTP(values);
-        if (response?.data?.code === 200) {
-          setCookie(
-            null,
-            "USER_ACCESS_TOKEN",
-            response?.data?.data?.access_token,
-            { maxAge: 86400, path: "/" }
-          );
-          resetForm();
-          navigate(`/subscription/${lang}`);
-          onHides();
-        } else {
-          formik.setFieldError("otp", response?.message);
-        }
-      } catch (error) {
-        console.error(error);
+  const validateOtp = (value) => {
+    if (!value) {
+      return t("OTP_required");
+    }
+    if (!/^\d+$/.test(value)) {
+      return t("Invalid_otp");
+    }
+    if (value.length !== 6) {
+      return t("OTP_required");
+    }
+    return null; // return null if validation passes
+  };
+
+  // Form submission handler
+  const handleSubmit = async (formState) => {
+    try {
+      // Validate OTP
+      const otpError = validateOtp(formState?.values?.otp);
+      if (otpError) return formApiRef?.current?.setError("otp", otpError);
+      const response = await verifyOTP(formState?.values);
+      if (response?.data?.code === 200) {
+        setCookie(
+          null,
+          "USER_ACCESS_TOKEN",
+          response?.data?.data?.access_token,
+          { maxAge: 86400, path: "/" }
+        );
+        resetFormAndClose();
+        navigate(`/subscription/${lang}`);
+        onHides();
+        formApiRef?.current?.reset();
+      } else {
+        formApiRef?.current?.setError("otp", response?.message);
       }
-    },
-  });
+    } catch (error) {
+      formApiRef?.current?.setError(
+        "otp",
+        error?.response?.data?.errors?.otp || error?.response?.data?.message
+      );
+    }
+  };
 
   useEffect(() => {
     if (!timer) setIsTimerRunning(false);
@@ -56,11 +70,11 @@ const useVerifyOTP = ({ onHides, setIsTimerRunning }) => {
 
   const handleResend = async () => {
     resetTimer();
-    formik.resetForm();
+    formApiRef?.current?.reset();
     try {
       const response = await resendOTP({ user_code: user_id });
       if (response?.data?.status_code !== 200) {
-        formik.setFieldError("otp", response?.message);
+        formApiRef?.current?.setFieldError("otp", response?.message);
       }
     } catch (error) {
       console.error(error);
@@ -68,7 +82,7 @@ const useVerifyOTP = ({ onHides, setIsTimerRunning }) => {
   };
 
   const resetFormAndClose = () => {
-    formik.resetForm();
+    formApiRef?.current?.reset();
     setIsTimerRunning(false);
     setTimer(59);
     onHides();
@@ -77,10 +91,12 @@ const useVerifyOTP = ({ onHides, setIsTimerRunning }) => {
   return {
     t,
     timer,
-    formik,
     isTimerRunning: timer > 0,
     resetFormAndClose,
     handleResend,
+    handleSubmit,
+    validateOtp,
+    formApiRef,
   };
 };
 

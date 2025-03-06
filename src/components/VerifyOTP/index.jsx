@@ -1,13 +1,20 @@
 import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap";
+import { Form as InformedForm } from "informed";
 import Style from "./VerifyOTP.module.scss";
 import useVerifyOTP from "./useVerifyOTP";
 import OTPInput from "react-otp-input";
 
 const VerifyOTP = ({ rtl, shows, setIsTimerRunning, onHides, getTextById }) => {
-  const { t, timer, formik, isTimerRunning, resetFormAndClose, handleResend } =
-    useVerifyOTP({ onHides, setIsTimerRunning });
-
+  const {
+    t,
+    timer,
+    isTimerRunning,
+    resetFormAndClose,
+    handleResend,
+    handleSubmit,
+    formApiRef,
+  } = useVerifyOTP({ onHides, setIsTimerRunning });
   return (
     <Modal
       show={shows}
@@ -15,40 +22,44 @@ const VerifyOTP = ({ rtl, shows, setIsTimerRunning, onHides, getTextById }) => {
       centered
       className={`${Style.modal} ${rtl}`}
     >
-      <button onClick={resetFormAndClose} className={Style.close}></button>
+      <button onClick={resetFormAndClose} className={Style.close} />
 
       <Modal.Body>
         <h2 className={Style.title}>{getTextById(8)}</h2>
         <p className={Style.head_text}>{getTextById(9)}</p>
-        <form onSubmit={formik.handleSubmit}>
-          <Form.Group className={`form-group text-start ${Style.otpform}`}>
-            <OTPInput
-              value={formik.values.otp}
-              onChange={(value) => {
-                formik.setFieldValue("otp", parseInt(value));
-                if (value?.length === 6) formik.handleSubmit();
-              }}
-              numInputs={6}
-              isInputNum
-              shouldAutoFocus
-              name="otp"
-              containerStyle={Style.otpInputWrp}
-              inputStyle={`flex-fill ${Style.otpInput}`}
-              renderInput={(props) => <Form.Control {...props} />}
-            />
-          </Form.Group>
+        <InformedForm onSubmit={handleSubmit} formApiRef={formApiRef}>
+          {({ formState }) => (
+            <>
+              <Form.Group className={`form-group text-start ${Style.otpform}`}>
+                <OTPInput
+                  value={formState.values?.otp || ""}
+                  onChange={(otpValue) => {
+                    formApiRef?.current?.setValue("otp", otpValue);
+                  }}
+                  numInputs={6}
+                  isInputNum
+                  shouldAutoFocus
+                  name="otp"
+                  containerStyle={Style.otpInputWrp}
+                  inputStyle={`flex-fill ${Style.otpInput}`}
+                  renderInput={(props) => <Form.Control {...props} />}
+                />
+              </Form.Group>
 
-          {formik.touched.otp && formik.errors.otp && (
-            <div className="formikError">{formik.errors.otp}</div>
+              {formState.errors.otp && (
+                <div className="formikError">{formState.errors.otp}</div>
+              )}
+              <button
+                className={`custom_verify_btn ${
+                  formState.submitting && "loading"
+                }`}
+                type="submit"
+              >
+                {getTextById(8)}
+              </button>
+            </>
           )}
-
-          <button
-            className={`custom_verify_btn ${formik.isSubmitting && "loading"}`}
-            type="submit"
-          >
-            {getTextById(8)}
-          </button>
-        </form>
+        </InformedForm>
 
         {!isTimerRunning ? (
           <button className={Style.resend_btn} onClick={handleResend}>

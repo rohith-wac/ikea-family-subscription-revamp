@@ -9,7 +9,6 @@ export const pushToAdobeDataLayer = (values) => {
         {
           id: "adobeECID",
           authenticatedState: "ambiguous",
-          primary: false,
         },
       ],
       PHONE: [

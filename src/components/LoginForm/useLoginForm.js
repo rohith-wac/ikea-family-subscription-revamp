@@ -60,6 +60,7 @@ const useLoginForm = ({ Style }) => {
         "mobile",
         error?.response?.data?.errors?.mobile || error?.response?.data?.message
       );
+      handleShow();
     }
   };
   const handleClose = () => {
