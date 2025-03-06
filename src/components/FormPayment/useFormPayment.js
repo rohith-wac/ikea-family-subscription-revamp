@@ -1,14 +1,15 @@
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import { postMethodInstance } from "../Subscription/api";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 import { getFromLocalStorage } from "../../helpers/functions";
-const useFormPayment = ({ userData, Frames }) => {
+import { useRtl } from "../../hooks/useRtl";
+const useFormPayment = ({ Style, Frames, basicData }) => {
+  const formApiRef = useRef();
   const { lang } = useParams();
   const navigate = useNavigate();
   const { t } = useTranslation(["common"]);
+  const { rtl } = useRtl({ Style });
   const order_id = getFromLocalStorage("order_id");
 
   const PRODUCTION = import.meta.env.VITE_REACT_APP_PRODUCTION;
@@ -47,24 +48,21 @@ const useFormPayment = ({ userData, Frames }) => {
     [order_id, lang, navigate]
   );
 
-  const formik = useFormik({
-    initialValues: {
-      cardholderName: "",
-    },
-    validationSchema: Yup.object({
-      cardholderName: Yup.string().required(),
-    }),
-    onSubmit: () => {
-      Frames.submitCard();
-    },
-  });
+  const handleSubmit = () => {
+    Frames.submitCard();
+  };
+
+  const showCardType = basicData?.data?.card_payment === "1";
 
   return {
     handleOnCardTokenized,
     t,
     REACT_APP_CHECKOUT_PUBLIC_KEY,
-    formik,
     lang,
+    rtl,
+    handleSubmit,
+    showCardType,
+    formApiRef,
   };
 };
 
